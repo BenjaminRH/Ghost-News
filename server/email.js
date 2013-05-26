@@ -26,13 +26,13 @@ console.log('this is a thing');
 var sendVerification = function(id){
   console.log(id);
   // console.log(Accounts.emailTemplates.verifyEmail.text());
-  // Accounts.sendVerificationEmail(id, 'javorszky.gabor@gmail.com');
-  Email.send({
-    to: 'javorszky.gabor@gmail.com',
-    from: 'noreply@javorszky.co.uk',
-    subject: 'this is a subject',
-    text: 'this is the message body'
-  });
+  Accounts.sendVerificationEmail(id);
+  // Email.send({
+  //   to: 'javorszky.gabor@gmail.com',
+  //   from: 'noreply@javorszky.co.uk',
+  //   subject: 'this is a subject',
+  //   text: 'this is the message body'
+  // });
 
 };
 
