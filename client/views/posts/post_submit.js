@@ -26,6 +26,9 @@ Template.post_submit.helpers({
       }
     };
     return !verified;
+  },
+  userId: function() {
+    return Meteor.user()._id;
   }
 });
 

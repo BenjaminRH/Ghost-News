@@ -1,4 +1,4 @@
-sendEmail = function(to, subject, text, html){
+var sendEmail = function(to, subject, text, html){
 
   // TO-DO: limit who can send emails
 
@@ -14,10 +14,28 @@ sendEmail = function(to, subject, text, html){
   console.log(html)
 
   Email.send({
-    from: from, 
-    to: to, 
-    subject: subject, 
+    from: from,
+    to: to,
+    subject: subject,
     text: text,
     html: html
   });
 };
+
+console.log('this is a thing');
+var sendVerification = function(id){
+  console.log(id);
+  // console.log(Accounts.emailTemplates.verifyEmail.text());
+  // Accounts.sendVerificationEmail(id, 'javorszky.gabor@gmail.com');
+  Email.send({
+    to: 'javorszky.gabor@gmail.com',
+    from: 'noreply@javorszky.co.uk',
+    subject: 'this is a subject',
+    text: 'this is the message body'
+  });
+
+};
+
+Meteor.methods({
+  sendVerification: sendVerification
+});
