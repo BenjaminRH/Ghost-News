@@ -22,18 +22,39 @@ var sendEmail = function(to, subject, text, html){
   });
 };
 
-console.log('this is a thing');
-var sendVerification = function(id){
-  console.log(id);
-  // console.log(Accounts.emailTemplates.verifyEmail.text());
-  Accounts.sendVerificationEmail(id);
-  // Email.send({
-  //   to: 'javorszky.gabor@gmail.com',
-  //   from: 'noreply@javorszky.co.uk',
-  //   subject: 'this is a subject',
-  //   text: 'this is the message body'
-  // });
+/**
+ * If you want to redefine what is being sent out in the email
+ */
+var newTemplate = {
+  from: 'user@domain.com', // as per http://tools.ietf.org/html/rfc5322
+  siteName: 'Ghost-News', // Public name of application
+  verifyEmail: {
+    subject: function(user) { // takes a user object with all of its bells and whistles
+      return "Here is your verification link, " + user.profile.name;
+    },
+    text: function(user, url){
+      return "Dear" + user.profile.name + "\n\n"
+      + "Please click on the following URL to verify your"
+      + "account, so you can being posting and commenting"
+      + "on the site.\n\n"
+      + url
+      + "\n\n"
+      + "Best regards,\n"
+      + "Ghost Team";
+    }
+  },
+  resetPassword: Accounts.emailTemplates.resetPassword,
+  enrollAccount: Accounts.emailTemplates.enrollAccount
+};
 
+Accounts.emailTemplates = newTemplate;
+
+console.log(Accounts.emailTemplates);
+
+
+
+var sendVerification = function(id){
+  Accounts.sendVerificationEmail(id);
 };
 
 Meteor.methods({
