@@ -29,18 +29,31 @@ Template.user_item.helpers({
 	},
 	userIsAdmin: function(){
 		return isAdmin(this);
+	},
+	isNotVerified: function() {
+		var user = Meteor.user(),
+		    emails = user.emails,
+		    verified = false;
+
+		for (var i = emails.length - 1; i >= 0; i--) {
+		  if(emails[i].verified){
+		    verified = true;
+		    break;
+		  }
+		};
+		return !verified;
 	}
 });
 
 Template.user_item.events({
-	'click .invite-link': function(e, instance){
+	'click .verify-link': function(e, instance){
 		e.preventDefault();
 		var user = Meteor.users.findOne(instance.data._id);
 		Meteor.users.update(user._id,{
 			$set:{
-				isInvited: true
+				'emails.0.verified': true
 			}
-		}, {multi: false}, function(error){
+		}, {multi: true}, function(error){
 			if(error){
 				throwError();
 			}else{
