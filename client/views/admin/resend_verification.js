@@ -1,4 +1,5 @@
 Template.resend_verification.rendered = function(){
+    console.log('this is the rendered function');
     userId=Session.get('selectedUserId');
     var user = Meteor.user(),
         emails = user.emails,
@@ -11,9 +12,10 @@ Template.resend_verification.rendered = function(){
       }
     };
     if(!verified){
-        Meteor.call('sendVerification', userId, function(error, result){
-            console.log('error ', error, 'result', result);
-        });
+        console.log('this is not verified');
+        // Meteor.call('sendVerification', userId, function(error, result){
+        //     console.log('error ', error, 'result', result);
+        // });
     }
 };
 
