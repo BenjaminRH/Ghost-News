@@ -1,4 +1,4 @@
-var sendEmail = function(to, subject, text, html){
+sendEmail = function(to, subject, text, html){
 
   // TO-DO: limit who can send emails
 
@@ -52,23 +52,17 @@ var newTemplate = {
 // Comment out the following line if you're happy with the original one
 Accounts.emailTemplates = newTemplate;
 
-/**
- * The function that gets called from the client side
- * @param  {string} id the user ID string, passed down from the client
- * @return {void}    sends the email
- * @author javorszky
- */
-var sendVerification = function(id){
-  Accounts.sendVerificationEmail(id);
-};
 
 
 /**
- * Meteor wrapper that makes the sendVerification() accessible
- * from the client side that's using Meteor.call('sendVerification')
+ * Meteor wrapper that holds functions and makes them
+ * accessible from the client side that's using
+ * Meteor.call('functionName')
  *
  * @type {[type]}
  */
 Meteor.methods({
-  sendVerification: sendVerification
+  sendVerification: function(id){
+    Accounts.sendVerificationEmail(id);
+  };
 });
