@@ -52,7 +52,7 @@ Template.user_item.events({
 	'click .verify-link': function(e, instance){
 		e.preventDefault();
 		var user = Meteor.users.findOne(instance.data._id);
-		console.log(user);
+		// console.log(user);
 		Meteor.users.update(user._id,{
 			$set:{
 				'emails.0.verified': true

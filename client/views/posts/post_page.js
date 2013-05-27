@@ -13,24 +13,7 @@ Template.post_page.helpers({
 	},
 	canView: function(){
 		return canView(Meteor.user());
-	},
-	isNotVerified: function(){
-        var user = Meteor.user();
-        if(!!user){
-            var emails = user.emails,
-                verified = false;
-
-            for (var i = emails.length - 1; i >= 0; i--) {
-                if(emails[i].verified){
-                    verified = true;
-                    break;
-                }
-            };
-            return !verified;
-        } else {
-            return false;
-        }
-    }
+	}
 });
 
 Template.post_page.rendered = function(){

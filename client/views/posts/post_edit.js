@@ -51,19 +51,6 @@ Template.post_edit.helpers({
   },
   hasStatusRejected: function(){
     return this.status == STATUS_REJECTED ? 'checked' : '';
-  },
-  isNotVerified: function() {
-    var user = Meteor.user(),
-        emails = user.emails,
-        verified = false;
-
-    for (var i = emails.length - 1; i >= 0; i--) {
-      if(emails[i].verified){
-        verified = true;
-        break;
-      }
-    };
-    return !verified;
   }
 });
 

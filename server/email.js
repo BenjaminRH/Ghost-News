@@ -49,6 +49,8 @@ var newTemplate = {
 };
 
 
+
+
 // Comment out the following line if you're happy with the original one
 Accounts.emailTemplates = newTemplate;
 
