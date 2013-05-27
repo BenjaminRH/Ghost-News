@@ -1,4 +1,5 @@
 <template name="nav">
+
   <header class="header grid">
 
     <a id="mobile-menu" href="#menu" class="mobile mobile-button menu"><i class="icon-menu"></i><span>Menu</span></a>
@@ -59,5 +60,14 @@
     </div>
 
   </header>
-
+  {{#if isNotVerified}}
+    {{#with findSentEmails}}
+      <div class="grid">
+        <div class="error error-message">
+          Your email address is not verified. You will not be able to post or comment. Check your emails, and click the link we sent you. We sent you {{num}} emails, the last being {{last}}.
+          <a id="resend-verification-link" data-who="{{{userId}}}" href="#">Click here to have it sent out again</a>
+        </div>
+      </div>
+    {{/with}}
+  {{/if}}
 </template>
