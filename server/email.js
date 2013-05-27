@@ -43,20 +43,32 @@ var newTemplate = {
       + "Ghost Team\n\n";
     }
   },
+  // Import the original ones
   resetPassword: Accounts.emailTemplates.resetPassword,
   enrollAccount: Accounts.emailTemplates.enrollAccount
 };
 
+
+// Comment out the following line if you're happy with the original one
 Accounts.emailTemplates = newTemplate;
 
-console.log(Accounts.emailTemplates);
-
-
-
+/**
+ * The function that gets called from the client side
+ * @param  {string} id the user ID string, passed down from the client
+ * @return {void}    sends the email
+ * @author javorszky
+ */
 var sendVerification = function(id){
   Accounts.sendVerificationEmail(id);
 };
 
+
+/**
+ * Meteor wrapper that makes the sendVerification() accessible
+ * from the client side that's using Meteor.call('sendVerification')
+ *
+ * @type {[type]}
+ */
 Meteor.methods({
   sendVerification: sendVerification
 });

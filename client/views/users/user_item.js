@@ -31,7 +31,7 @@ Template.user_item.helpers({
 		return isAdmin(this);
 	},
 	isNotVerified: function() {
-		var user = Meteor.user(),
+		var user = this,
 		    emails = user.emails,
 		    verified = false;
 

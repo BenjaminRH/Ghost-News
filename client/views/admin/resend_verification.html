@@ -1,8 +1,13 @@
 <template name="resend_verification">
   <div class="grid">
     <div class="grid-block">
-      <h2>Settings</h2>
-      <p>Your email notification was sent out again. Check your emails, and click on the link in that.</p>
+      {{#if isNotVerified}}
+        <h2>Re-send email verification</h2>
+        <p>Your email notification was sent out again. Check your emails, and click on the link in that.</p>
+      {{else}}
+        <h2>You've already verified</h2>
+        <p>Your account is already verified. No emails were sent, happy posting and commenting.</p>
+      {{/if}}
     </div>
 
   </div>

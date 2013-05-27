@@ -14,7 +14,14 @@
 	</td>
 	<td><a href="#">{{commentsCount}}</a></td>
 	<td>{{karma}}</td>
-	<td>{{#if isNotVerified}}<a class="verify-link" href="#"><i class="icon-check"></i>Verify</a>{{else}}<a href="#" class="unverify-link">Unverify</a>{{/if}}</td>
+	<td>
+		{{#if isNotVerified}}
+			<a class="verify-link" href="#"><i class="icon-check"></i>Verify</a>
+		{{else}}
+			<p>Verified</p>
+		{{/if}}
+	</td>
+
 	<td>{{#if userIsAdmin}}<a class="unadmin-link" href="#"><i class="icon-check unadmin-link"></i>Unadmin</a>{{else}}<a href="#" class="admin-link">Make admin</a>{{/if}}</td>
 	<td><a class="delete-link" href="#">Delete User</a></td>
 </tr>
