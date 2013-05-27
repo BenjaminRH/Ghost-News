@@ -1,7 +1,25 @@
 Template.comment_edit.helpers({
 	comment:function(){
 		return Comments.findOne(Session.get('selectedCommentId'));
-	}
+	},
+	isNotVerified: function(){
+        var user = Meteor.user();
+        console.log(user);
+        if(!!user){
+            var emails = user.emails,
+                verified = false;
+
+            for (var i = emails.length - 1; i >= 0; i--) {
+                if(emails[i].verified){
+                    verified = true;
+                    break;
+                }
+            };
+            return !verified;
+        } else {
+            return true;
+        }
+    }
 });
 
 Template.comment_edit.rendered = function(){
