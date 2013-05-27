@@ -30,19 +30,22 @@ Template.user_item.helpers({
 	userIsAdmin: function(){
 		return isAdmin(this);
 	},
-	isNotVerified: function() {
-		var user = this,
-		    emails = user.emails,
-		    verified = false;
-
-		for (var i = emails.length - 1; i >= 0; i--) {
-		  if(emails[i].verified){
-		    verified = true;
-		    break;
-		  }
-		};
-		return !verified;
-	}
+	isNotVerified: function(){
+        var user = Meteor.user();
+        if(!!user){
+            var emails = user.emails,
+                verified = false;
+            for (var i = emails.length - 1; i >= 0; i--) {
+                if(emails[i].verified){
+                    verified = true;
+                    break;
+                }
+            };
+            return !verified;
+        } else {
+            return false;
+        }
+    }
 });
 
 Template.user_item.events({
