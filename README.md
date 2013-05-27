@@ -1,3 +1,16 @@
+# Ghost News
+
+This is the Telescope implementation of Ghost news
+
+# Changelog
+
+* Added email verification, and customization. See `server/emails.js` to customize the message.
+* Restricted posting and commenting to people who verified their email address.
+* Verification can be done manually in the users list. You can't unverify people
+* Added twitter back in. Need to configure it though, haven't tested it.
+
+# Telescope
+
 Telescope is an open-source, real-time social news site built with [Meteor](http://meteor.com)
 
 **Note:** Telescope is beta software. Most of it should work but it's still a little unpolished and you'll probably find some bugs. Use at your own risk :)
@@ -41,7 +54,7 @@ Telescope is an open-source, real-time social news site built with [Meteor](http
 - Check out the settings page and fill out basic things like the site's name
 
 # Local Variables
-Meteor uses local environment variables for a few things, such as configuring email. While this is straightforward to do on Heroku (see above), on a local dev environment the best way is to set up an alias for the `mrt` command. 
+Meteor uses local environment variables for a few things, such as configuring email. While this is straightforward to do on Heroku (see above), on a local dev environment the best way is to set up an alias for the `mrt` command.
 
 For example, to configure Meteor to use Mailgun for email, in your `.bash_profile` file just add:
 `alias m='MAIL_URL=smtp://username:password@smtp.mailgun.org:587/ mrt'`

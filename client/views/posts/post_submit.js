@@ -12,20 +12,25 @@ Template.post_submit.helpers({
     var post=Posts.findOne(Session.get('selectedPostId'));
     return post && this._id == post.userId;
   },
-  isNotVerified: function() {
-    console.log('this happend');
-    console.log(Meteor.user());
-    var user = Meteor.user(),
-        emails = user.emails,
-        verified = false;
+  isNotVerified: function(){
+      var user = Meteor.user();
+      if(!!user){
+          var emails = user.emails,
+              verified = false;
 
-    for (var i = emails.length - 1; i >= 0; i--) {
-      if(emails[i].verified){
-        verified = true;
-        break;
+          for (var i = emails.length - 1; i >= 0; i--) {
+            if(emails[i].verified){
+              verified = true;
+              break;
+            }
+          };
+          return !verified;
+      } else {
+          return true;
       }
-    };
-    return !verified;
+  },
+  userId: function() {
+    return Meteor.user()._id;
   }
 });
 

@@ -94,6 +94,14 @@
     return 'unsubscribe';
   }
 
+  resend_verification = function(id){
+    if(typeof id !== undefined){
+      Session.set('selectedUserId', id);
+
+    }
+    return 'resend_verification';
+  }
+
   category = function(categorySlug, view){
     var view = (typeof view === 'undefined') ? 'top' : view;
     console.log('setting category slug to: '+categorySlug)
@@ -136,7 +144,8 @@
     '/users/:id': user_profile,
     '/users/:id/edit': user_edit,
     '/:year/:month/:day': digest,
-    '/unsubscribe/:hash': unsubscribe
+    '/unsubscribe/:hash': unsubscribe,
+    '/resend-verification/:id': resend_verification
 });
 
 

@@ -2,7 +2,8 @@
   {{#if isNotVerified}}
     <div class="grid">
       <div class="error error-message">
-        Your email address is not verified. You will not be able to comment. Check your emails, and click the link we sent you.
+        Your email address is not verified. You will not be able to post or comment. Check your emails, and click the link we sent you.
+        <a href="resend-verification/{{{userId}}}">Click here to have it sent out again</a>
       </div>
     </div>
   {{/if}}
