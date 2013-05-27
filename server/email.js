@@ -20,7 +20,7 @@ sendEmail = function(to, subject, text, html){
     text: text,
     html: html
   });
-};
+}
 
 /**
  * If you want to redefine what is being sent out in the email
@@ -64,5 +64,5 @@ Accounts.emailTemplates = newTemplate;
 Meteor.methods({
   sendVerification: function(id){
     Accounts.sendVerificationEmail(id);
-  };
+  }
 });
