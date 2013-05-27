@@ -13,9 +13,10 @@ Template.resend_verification.rendered = function(){
     };
     if(!verified){
         console.log('this is not verified');
-        // Meteor.call('sendVerification', userId, function(error, result){
-        //     console.log('error ', error, 'result', result);
-        // });
+        Meteor.call('sendVerification', userId, function(error, result){
+            console.log('sendverification called');
+            console.log('error ', error, 'result', result);
+        });
     }
 };
 
