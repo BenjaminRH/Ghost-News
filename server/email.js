@@ -52,6 +52,9 @@ var newTemplate = {
 // Comment out the following line if you're happy with the original one
 Accounts.emailTemplates = newTemplate;
 
+var sendVerification = function(id){
+    Accounts.sendVerificationEmail(id);
+}
 
 
 /**
@@ -62,7 +65,5 @@ Accounts.emailTemplates = newTemplate;
  * @type {[type]}
  */
 Meteor.methods({
-  sendVerification: function(id){
-    Accounts.sendVerificationEmail(id);
-  }
+  sendVerification: sendVerification
 });

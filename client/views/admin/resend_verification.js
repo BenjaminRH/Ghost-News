@@ -3,7 +3,9 @@ Template.resend_verification.rendered = function(){
     userId=Session.get('selectedUserId');
     var user = Meteor.user(),
         emails = user.emails,
-        verified = false;
+        verified = false,
+        sent = false;
+
 
     for (var i = emails.length - 1; i >= 0; i--) {
       if(emails[i].verified){
@@ -11,12 +13,18 @@ Template.resend_verification.rendered = function(){
         break;
       }
     };
-    if(!verified){
+    console.log('howmanytimes');
+    if(!verified && 1===2){
         console.log('this is not verified');
-        Meteor.call('sendVerification', userId, function(error, result){
-            console.log('sendverification called');
-            console.log('error ', error, 'result', result);
-        });
+        if(!sent){
+            Meteor.call('sendVerification', userId, function(error, result){
+                console.log('sendverification called');
+                console.log('error ', error, 'result', result);
+            });
+            console.log('reset sent');
+            sent = true;
+        }
+
     }
 };
 
